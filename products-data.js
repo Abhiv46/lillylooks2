@@ -1,6 +1,6 @@
 // LillyLooks product catalogue
 // Each product links out to the TikTok Shop — this site is a showcase layer.
-const TIKTOK_SHOP_URL = "https://vt.tiktok.com/ZNRLDK9Qo/?page=TikTokShop&is_from_webapp=1";
+const TIKTOK_SHOP_URL = "https://www.tiktok.com/@infolillylooks";
 
 const PRODUCTS = [
   { name: "Multicoloured Rhinestone Face Gem Stickers", desc: "Create stunning looks with dazzling, reusable face gems.", img: "images/Multicoloured Rhinestone Face Gem Stickers.jpeg", category: "face", badge: "bestseller" },
