@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /images/
-Disallow: /admin/
-Disallow: /private/
 
-# Aapki Sitemap ka URL
-Sitemap: https://www.lillylooks.co.uk/sitemap.xml
+Sitemap: https://lillylooks.co.uk/sitemap.xml

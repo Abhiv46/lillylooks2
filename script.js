@@ -31,7 +31,7 @@ function productCardHTML(p, i) {
     <div class="product-card" data-category="${p.category}" data-url="product.html?p=${productSlug(p.name)}" style="transition-delay:${(i % 8) * 40}ms">
       ${p.badge ? `<span class="product-badge ${p.badge}">${badgeLabel(p.badge)}</span>` : ''}
       <div class="product-img">
-        <img src="${p.img}" alt="${p.name}" class="real-product-img" loading="lazy">
+        <img src="${p.img}" alt="${p.name}" class="real-product-img" loading="lazy" decoding="async">
       </div>
       <div class="product-info">
         <h3>${p.name}</h3>
@@ -90,13 +90,14 @@ function renderProductDetail() {
   }
 
   document.title = `${product.name} | LillyLooks`;
+  updateProductMeta(product);
 
   wrap.innerHTML = `
     <a href="index.html#products" class="back-link"><i class="fas fa-arrow-left"></i> Back to the Edit</a>
     <div class="detail-grid">
       <div class="detail-img">
         ${product.badge ? `<span class="product-badge ${product.badge}">${badgeLabel(product.badge)}</span>` : ''}
-        <img src="${product.img}" alt="${product.name}" class="real-product-img">
+        <img src="${product.img}" alt="${product.name}" class="real-product-img" decoding="async">
       </div>
       <div class="detail-info">
         <p class="section-eyebrow">The Edit</p>
@@ -122,6 +123,51 @@ function renderProductDetail() {
     attachCardLinks(moreGrid);
     observeCards();
   }
+}
+
+// ---- Per-product SEO meta + Product schema (product.html) ----
+const SITE_URL = 'https://lillylooks.co.uk';
+
+function setMeta(selector, attr, value) {
+  const el = document.querySelector(selector);
+  if (el) el.setAttribute(attr, value);
+}
+
+function updateProductMeta(product) {
+  const pageUrl = `${SITE_URL}/product.html?p=${productSlug(product.name)}`;
+  const imgUrl = `${SITE_URL}/${encodeURI(product.img)}`;
+  const desc = `${product.desc} Available on TikTok Shop UK at LillyLooks.`;
+
+  setMeta('meta[name="description"]', 'content', desc);
+  setMeta('link[rel="canonical"]', 'href', pageUrl);
+  setMeta('meta[property="og:title"]', 'content', `${product.name} | LillyLooks UK`);
+  setMeta('meta[property="og:description"]', 'content', desc);
+  setMeta('meta[property="og:url"]', 'content', pageUrl);
+  setMeta('meta[property="og:image"]', 'content', imgUrl);
+  setMeta('meta[name="twitter:title"]', 'content', `${product.name} | LillyLooks UK`);
+  setMeta('meta[name="twitter:description"]', 'content', desc);
+  setMeta('meta[name="twitter:image"]', 'content', imgUrl);
+
+  const offer = { '@type': 'Offer', url: TIKTOK_SHOP_URL };
+  if (product.price) {
+    offer.priceCurrency = 'GBP';
+    offer.price = product.price.replace('£', '');
+  }
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: imgUrl,
+    description: product.desc,
+    url: pageUrl,
+    offers: offer
+  };
+  document.querySelectorAll('script[data-product-schema]').forEach(s => s.remove());
+  const tag = document.createElement('script');
+  tag.type = 'application/ld+json';
+  tag.setAttribute('data-product-schema', '');
+  tag.textContent = JSON.stringify(schema);
+  document.head.appendChild(tag);
 }
 
 function badgeLabel(key) {
