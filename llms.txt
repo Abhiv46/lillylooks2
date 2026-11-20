@@ -1,0 +1,44 @@
+# LillyLooks
+
+LillyLooks is a UK beauty showcase website presenting a curated edit of TikTok-viral skincare, makeup and beauty essentials. This website does not sell products directly: it is a showcase, and all purchases are completed securely through TikTok Shop.
+
+Shop on TikTok: https://www.tiktok.com/@infolillylooks
+Contact: infolillylooks@gmail.com
+
+## Categories
+
+- Skin & Body: https://lillylooks.co.uk/category.html?c=skin
+- Face & Gems: https://lillylooks.co.uk/category.html?c=face
+- Lips: https://lillylooks.co.uk/category.html?c=lips
+- Tools & Brushes: https://lillylooks.co.uk/category.html?c=tools
+
+## Products
+
+- Multicoloured Rhinestone Face Gem Stickers (Face & Gems): https://lillylooks.co.uk/product.html?p=multicoloured-rhinestone-face-gem-stickers
+- Vegan 8PCS Mini Travel Makeup Brush Set (Tools & Brushes): https://lillylooks.co.uk/product.html?p=vegan-8pcs-mini-travel-makeup-brush-set
+- Nail Gem Stones & Face Gems (Face & Gems): https://lillylooks.co.uk/product.html?p=nail-gem-stones-face-gems
+- Mini Travel Makeup Brush Set (Tools & Brushes): https://lillylooks.co.uk/product.html?p=mini-travel-makeup-brush-set
+- Luxury Satin Bonnet for Sleeping (Skin & Body): https://lillylooks.co.uk/product.html?p=luxury-satin-bonnet-for-sleeping
+- Multicoloured Crystal (Skin & Body): https://lillylooks.co.uk/product.html?p=multicoloured-crystal
+- Premium Beauty Blender in a Cup (Tools & Brushes): https://lillylooks.co.uk/product.html?p=premium-beauty-blender-in-a-cup
+- Neck & Chin Tightening Cream With Roller (Skin & Body): https://lillylooks.co.uk/product.html?p=neck-chin-tightening-cream-with-roller
+- Korean Bio-Collagen Face Mask (Skin & Body): https://lillylooks.co.uk/product.html?p=korean-bio-collagen-face-mask
+- Soft Makeup Powder Puff Set (Tools & Brushes): https://lillylooks.co.uk/product.html?p=soft-makeup-powder-puff-set
+- Shimmer Spray (Skin & Body): https://lillylooks.co.uk/product.html?p=shimmer-spray
+- Mini Finger Puff for Foundation (Tools & Brushes): https://lillylooks.co.uk/product.html?p=mini-finger-puff-for-foundation
+- Dual-Sided Exfoliating Gloves for Body (Skin & Body): https://lillylooks.co.uk/product.html?p=dual-sided-exfoliating-gloves-for-body
+- Portable Mini Handheld Fan (Tools & Brushes): https://lillylooks.co.uk/product.html?p=portable-mini-handheld-fan
+- Teeth Whitening Strips - 14 Strips (Skin & Body): https://lillylooks.co.uk/product.html?p=teeth-whitening-strips-14-strips
+- Waterproof Brow Gel (Face & Gems): https://lillylooks.co.uk/product.html?p=waterproof-brow-gel
+- Waterproof Matte Lip Liner (Lips): https://lillylooks.co.uk/product.html?p=waterproof-matte-lip-liner
+- Peel-Off Liquid Lipstick (Lips): https://lillylooks.co.uk/product.html?p=peel-off-liquid-lipstick
+- Viral 18-Color Eyeshadow Palette (Face & Gems): https://lillylooks.co.uk/product.html?p=viral-18-color-eyeshadow-palette
+- Romantic Bear Peel-Off Lip Tattoo (Lips): https://lillylooks.co.uk/product.html?p=romantic-bear-peel-off-lip-tattoo
+- Color Changing Jelly Lipstick (Lips): https://lillylooks.co.uk/product.html?p=color-changing-jelly-lipstick
+
+## Guides
+
+- Beauty Guides & How-Tos index: https://lillylooks.co.uk/guides.html
+- Korean Bio-Collagen Face Masks: What They Are and How to Use One: https://lillylooks.co.uk/guide-korean-bio-collagen-face-mask.html
+- Satin Bonnets for Sleeping: What They Do and How to Wear One: https://lillylooks.co.uk/guide-satin-bonnet-for-sleeping.html
+- Peel-Off Lip Stain: How It Works and How to Apply It: https://lillylooks.co.uk/guide-peel-off-lip-stain.html

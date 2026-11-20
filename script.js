@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   renderProducts();
   renderProductDetail();
+  renderCategoryPage();
+  renderGuidePicks();
+  initStaticCards();
   initFilters();
   renderReviews();
   initNavbar();
@@ -44,6 +47,8 @@ function productCardHTML(p, i) {
 
 function attachCardLinks(scope) {
   scope.querySelectorAll('.product-card').forEach(card => {
+    if (card.dataset.linked) return;
+    card.dataset.linked = '1';
     const go = () => { window.location.href = card.dataset.url; };
     card.addEventListener('click', go);
     card.setAttribute('role', 'link');
@@ -109,7 +114,8 @@ function renderProductDetail() {
         </a>
         <p class="detail-note"><i class="fas fa-shield-heart"></i> This site is a showcase &mdash; checkout happens securely on TikTok Shop.</p>
       </div>
-    </div>`;
+    </div>
+    ${productExtraHTML(product)}`;
 
   // More products: same category first, then the rest of the Edit
   const moreGrid = document.getElementById('moreGrid');
@@ -123,6 +129,144 @@ function renderProductDetail() {
     attachCardLinks(moreGrid);
     observeCards();
   }
+}
+
+// ---- Product page extras: How to Use + FAQ (from products-data.js) ----
+function productExtraHTML(product) {
+  let html = '';
+
+  if (product.howto && product.howto.length) {
+    html += `
+    <div class="section-header">
+      <p class="section-eyebrow">Step by Step</p>
+      <h2 class="section-title">How to Use</h2>
+    </div>
+    <div class="trust-grid">
+      ${product.howto.map((step, i) => `
+      <div class="trust-item">
+        <i class="fas fa-${i + 1}"></i>
+        <h4>Step ${i + 1}</h4>
+        <p>${step}</p>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  if (product.faq && product.faq.length) {
+    html += `
+    <div class="section-header">
+      <p class="section-eyebrow">Good to Know</p>
+      <h2 class="section-title">Questions &amp; Answers</h2>
+    </div>
+    <div class="trust-grid">
+      ${product.faq.map(item => `
+      <div class="trust-item">
+        <i class="fas fa-circle-question"></i>
+        <h4>${item.q}</h4>
+        <p>${item.a}</p>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  return html;
+}
+
+// ---- Category landing pages (category.html?c=<key>) ----
+function renderCategoryPage() {
+  const header = document.getElementById('categoryHeader');
+  const grid = document.getElementById('categoryGrid');
+  if (!header || !grid || typeof PRODUCTS === 'undefined' || typeof CATEGORIES === 'undefined') return;
+
+  const key = new URLSearchParams(window.location.search).get('c');
+  const cat = key ? CATEGORIES[key] : null;
+
+  if (!cat) {
+    header.innerHTML = `
+      <p class="section-eyebrow">The Edit</p>
+      <h1 class="section-title">We couldn't find that category</h1>
+      <p class="section-subtitle">The full Edit is waiting for you on the shop page.</p>`;
+    grid.innerHTML = PRODUCTS.map((p, i) => productCardHTML(p, i)).join('');
+    attachCardLinks(grid);
+    observeCards();
+    return;
+  }
+
+  const items = PRODUCTS.filter(p => p.category === key);
+  document.title = cat.title;
+  updateCategoryMeta(key, cat, items);
+
+  header.innerHTML = `
+    <p class="section-eyebrow">The Edit &mdash; ${cat.name}</p>
+    <h1 class="section-title">${cat.heading}</h1>
+    <p class="section-subtitle">${cat.intro}</p>`;
+
+  grid.innerHTML = items.map((p, i) => productCardHTML(p, i)).join('');
+  attachCardLinks(grid);
+  observeCards();
+}
+
+function updateCategoryMeta(key, cat, items) {
+  const pageUrl = `${SITE_URL}/category.html?c=${key}`;
+  const firstImg = items.length ? `${SITE_URL}/${encodeURI(items[0].img)}` : '';
+
+  setMeta('meta[name="description"]', 'content', cat.metaDesc);
+  setMeta('link[rel="canonical"]', 'href', pageUrl);
+  setMeta('meta[property="og:title"]', 'content', cat.title);
+  setMeta('meta[property="og:description"]', 'content', cat.metaDesc);
+  setMeta('meta[property="og:url"]', 'content', pageUrl);
+  if (firstImg) setMeta('meta[property="og:image"]', 'content', firstImg);
+  setMeta('meta[name="twitter:title"]', 'content', cat.title);
+  setMeta('meta[name="twitter:description"]', 'content', cat.metaDesc);
+  if (firstImg) setMeta('meta[name="twitter:image"]', 'content', firstImg);
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `LillyLooks — ${cat.name}`,
+    numberOfItems: items.length,
+    itemListElement: items.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Product',
+        name: p.name,
+        image: `${SITE_URL}/${encodeURI(p.img)}`,
+        description: p.desc,
+        url: `${SITE_URL}/product.html?p=${productSlug(p.name)}`,
+        offers: { '@type': 'Offer', url: TIKTOK_SHOP_URL }
+      }
+    }))
+  };
+  document.querySelectorAll('script[data-category-schema]').forEach(s => s.remove());
+  const tag = document.createElement('script');
+  tag.type = 'application/ld+json';
+  tag.setAttribute('data-category-schema', '');
+  tag.textContent = JSON.stringify(schema);
+  document.head.appendChild(tag);
+}
+
+// ---- Guide pages: "Shop this guide" product picks ----
+function renderGuidePicks() {
+  document.querySelectorAll('[data-pick]').forEach(grid => {
+    if (typeof PRODUCTS === 'undefined') return;
+    const slugs = grid.dataset.pick.split(',').map(s => s.trim()).filter(Boolean);
+    const picks = slugs
+      .map(slug => PRODUCTS.find(p => productSlug(p.name) === slug))
+      .filter(Boolean);
+    if (!picks.length) return;
+    grid.innerHTML = picks.map((p, i) => productCardHTML(p, i)).join('');
+    attachCardLinks(grid);
+    observeCards();
+  });
+}
+
+// ---- Static product cards (guides index) ----
+function initStaticCards() {
+  document.querySelectorAll('.product-grid').forEach(grid => {
+    if (grid.querySelector('.product-card[data-url]')) {
+      attachCardLinks(grid);
+      observeCards();
+    }
+  });
 }
 
 // ---- Per-product SEO meta + Product schema (product.html) ----
@@ -153,8 +297,7 @@ function updateProductMeta(product) {
     offer.priceCurrency = 'GBP';
     offer.price = product.price.replace('£', '');
   }
-  const schema = {
-    '@context': 'https://schema.org',
+  const productSchema = {
     '@type': 'Product',
     name: product.name,
     image: imgUrl,
@@ -162,6 +305,18 @@ function updateProductMeta(product) {
     url: pageUrl,
     offers: offer
   };
+  const graph = [productSchema];
+  if (product.faq && product.faq.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: product.faq.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    });
+  }
+  const schema = { '@context': 'https://schema.org', '@graph': graph };
   document.querySelectorAll('script[data-product-schema]').forEach(s => s.remove());
   const tag = document.createElement('script');
   tag.type = 'application/ld+json';

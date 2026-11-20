@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lillylooks.co.uk/</loc>
     <lastmod>2026-11-20</lastmod>
@@ -11,125 +12,269 @@
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Multicoloured%20Rhinestone%20Face%20Gem%20Stickers.jpeg</image:loc>
+      <image:title>Multicoloured Rhinestone Face Gem Stickers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=vegan-8pcs-mini-travel-makeup-brush-set</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Vegan%208PCS%20Mini%20Travel%20Makeup%20Brush%20Set.jpeg</image:loc>
+      <image:title>Vegan 8PCS Mini Travel Makeup Brush Set</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=nail-gem-stones-face-gems</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Nail%20Gem%20Stones%20%26%20Face%20Gems.jpeg</image:loc>
+      <image:title>Nail Gem Stones &amp; Face Gems</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=mini-travel-makeup-brush-set</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Mini%20Travel%20Makeup%20Brush%20Set.jpeg</image:loc>
+      <image:title>Mini Travel Makeup Brush Set</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=luxury-satin-bonnet-for-sleeping</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Luxury%20Satin%20Bonnet%20for%20Sleeping.jpeg</image:loc>
+      <image:title>Luxury Satin Bonnet for Sleeping</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=multicoloured-crystal</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Multicoloured%20Crystal.jpeg</image:loc>
+      <image:title>Multicoloured Crystal</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=premium-beauty-blender-in-a-cup</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Premium%20Beauty%20Blender%20in%20a%20Cup.jpeg</image:loc>
+      <image:title>Premium Beauty Blender in a Cup</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=neck-chin-tightening-cream-with-roller</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Neck%20%26%20Chin%20Tightening%20Cream%20With%20Roller.jpeg</image:loc>
+      <image:title>Neck &amp; Chin Tightening Cream With Roller</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=korean-bio-collagen-face-mask</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Korean%20Bio-Collagen%20Face%20Mask.jpeg</image:loc>
+      <image:title>Korean Bio-Collagen Face Mask</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=soft-makeup-powder-puff-set</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Soft%20Makeup%20Powder%20Puff%20Set.jpeg</image:loc>
+      <image:title>Soft Makeup Powder Puff Set</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=shimmer-spray</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Shimmer%20Spray.jpeg</image:loc>
+      <image:title>Shimmer Spray</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=mini-finger-puff-for-foundation</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Mini%20Finger%20Puff%20for%20Foundation.jpeg</image:loc>
+      <image:title>Mini Finger Puff for Foundation</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=dual-sided-exfoliating-gloves-for-body</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Dual-Sided%20Exfoliating%20Gloves%20for%20Body.jpeg</image:loc>
+      <image:title>Dual-Sided Exfoliating Gloves for Body</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=portable-mini-handheld-fan</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Portable%20Mini%20Handheld%20Fan.jpeg</image:loc>
+      <image:title>Portable Mini Handheld Fan</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=teeth-whitening-strips-14-strips</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Teeth%20Whitening%20Strips%20-%2014%20Strips.jpeg</image:loc>
+      <image:title>Teeth Whitening Strips - 14 Strips</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=waterproof-brow-gel</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Waterproof%20Brow%20Gel.jpeg</image:loc>
+      <image:title>Waterproof Brow Gel</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=waterproof-matte-lip-liner</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Waterproof%20Mate%20Lip%20Liner.jpeg</image:loc>
+      <image:title>Waterproof Matte Lip Liner</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=peel-off-liquid-lipstick</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Peel-Off%20Liquid%20Lipstick.jpeg</image:loc>
+      <image:title>Peel-Off Liquid Lipstick</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=viral-18-color-eyeshadow-palette</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Viral%2018-Color%20Eyeshadow%20Palette.jpeg</image:loc>
+      <image:title>Viral 18-Color Eyeshadow Palette</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=romantic-bear-peel-off-lip-tattoo</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Romantic%20Bear%20Peel-Off%20Lip%20Tattoo.jpeg</image:loc>
+      <image:title>Romantic Bear Peel-Off Lip Tattoo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lillylooks.co.uk/product.html?p=color-changing-jelly-lipstick</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Color%20Changing%20Jelly%20Lipstick.jpeg</image:loc>
+      <image:title>Color Changing Jelly Lipstick</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/category.html?c=skin</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/category.html?c=face</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/category.html?c=lips</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/category.html?c=tools</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/guides.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/guide-korean-bio-collagen-face-mask.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Korean%20Bio-Collagen%20Face%20Mask.jpeg</image:loc>
+      <image:title>Korean Bio-Collagen Face Mask</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/guide-satin-bonnet-for-sleeping.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Luxury%20Satin%20Bonnet%20for%20Sleeping.jpeg</image:loc>
+      <image:title>Luxury Satin Bonnet for Sleeping</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lillylooks.co.uk/guide-peel-off-lip-stain.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lillylooks.co.uk/images/Romantic%20Bear%20Peel-Off%20Lip%20Tattoo.jpeg</image:loc>
+      <image:title>Romantic Bear Peel-Off Lip Tattoo</image:title>
+    </image:image>
   </url>
 </urlset>
