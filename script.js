@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   renderProducts();
+  renderProductDetail();
   initFilters();
   renderReviews();
   initNavbar();
@@ -25,12 +26,9 @@ function initPreloader() {
 }
 
 // ---- Render product grid ----
-function renderProducts() {
-  const grid = document.getElementById('productGrid');
-  if (!grid || typeof PRODUCTS === 'undefined') return;
-
-  grid.innerHTML = PRODUCTS.map((p, i) => `
-    <div class="product-card" data-category="${p.category}" style="transition-delay:${(i % 8) * 40}ms">
+function productCardHTML(p, i) {
+  return `
+    <div class="product-card" data-category="${p.category}" data-url="product.html?p=${productSlug(p.name)}" style="transition-delay:${(i % 8) * 40}ms">
       ${p.badge ? `<span class="product-badge ${p.badge}">${badgeLabel(p.badge)}</span>` : ''}
       <div class="product-img">
         <img src="${p.img}" alt="${p.name}" class="real-product-img" loading="lazy">
@@ -38,27 +36,92 @@ function renderProducts() {
       <div class="product-info">
         <h3>${p.name}</h3>
         <p class="product-desc">${p.desc}</p>
+        ${p.price ? `<span class="product-price">${p.price}</span>` : ''}
         <span class="tiktok-badge"><i class="fab fa-tiktok"></i> Buy on TikTok</span>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+}
 
-  grid.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      window.open(TIKTOK_SHOP_URL, '_blank', 'noopener');
-    });
+function attachCardLinks(scope) {
+  scope.querySelectorAll('.product-card').forEach(card => {
+    const go = () => { window.location.href = card.dataset.url; };
+    card.addEventListener('click', go);
     card.setAttribute('role', 'link');
     card.setAttribute('tabindex', '0');
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        window.open(TIKTOK_SHOP_URL, '_blank', 'noopener');
+        go();
       }
     });
   });
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  if (!grid || typeof PRODUCTS === 'undefined') return;
+
+  grid.innerHTML = PRODUCTS.map((p, i) => productCardHTML(p, i)).join('');
+  attachCardLinks(grid);
 
   // Re-observe for scroll-reveal after render
   observeCards();
+}
+
+// ---- Individual product page (product.html) ----
+function renderProductDetail() {
+  const wrap = document.getElementById('productDetail');
+  if (!wrap || typeof PRODUCTS === 'undefined') return;
+
+  const slug = new URLSearchParams(window.location.search).get('p');
+  const product = slug ? PRODUCTS.find(p => productSlug(p.name) === slug) : null;
+
+  if (!product) {
+    const moreSection = document.getElementById('moreSection');
+    if (moreSection) moreSection.style.display = 'none';
+    wrap.innerHTML = `
+      <div class="detail-fallback">
+        <p class="section-eyebrow">The Edit</p>
+        <h1 class="section-title">We couldn't find that product</h1>
+        <p class="section-subtitle">It may have sold out, or the link could be out of date &mdash; but the rest of the Edit is waiting for you.</p>
+        <a href="index.html#products" class="btn-primary">Browse the Shop <i class="fas fa-arrow-right"></i></a>
+      </div>`;
+    return;
+  }
+
+  document.title = `${product.name} | LillyLooks`;
+
+  wrap.innerHTML = `
+    <a href="index.html#products" class="back-link"><i class="fas fa-arrow-left"></i> Back to the Edit</a>
+    <div class="detail-grid">
+      <div class="detail-img">
+        ${product.badge ? `<span class="product-badge ${product.badge}">${badgeLabel(product.badge)}</span>` : ''}
+        <img src="${product.img}" alt="${product.name}" class="real-product-img">
+      </div>
+      <div class="detail-info">
+        <p class="section-eyebrow">The Edit</p>
+        <h1>${product.name}</h1>
+        <p class="detail-desc">${product.desc}</p>
+        ${product.price ? `<span class="detail-price">${product.price}</span>` : ''}
+        <a href="${TIKTOK_SHOP_URL}" class="btn-primary btn-large" target="_blank" rel="noopener">
+          <i class="fab fa-tiktok"></i> Buy on TikTok Shop
+        </a>
+        <p class="detail-note"><i class="fas fa-shield-heart"></i> This site is a showcase &mdash; checkout happens securely on TikTok Shop.</p>
+      </div>
+    </div>`;
+
+  // More products: same category first, then the rest of the Edit
+  const moreGrid = document.getElementById('moreGrid');
+  if (moreGrid) {
+    const others = PRODUCTS.filter(p => p !== product);
+    const more = [
+      ...others.filter(p => p.category === product.category),
+      ...others.filter(p => p.category !== product.category)
+    ].slice(0, 4);
+    moreGrid.innerHTML = more.map((p, i) => productCardHTML(p, i)).join('');
+    attachCardLinks(moreGrid);
+    observeCards();
+  }
 }
 
 function badgeLabel(key) {
