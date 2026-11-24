@@ -31,10 +31,10 @@ function initPreloader() {
 // ---- Render product grid ----
 function productCardHTML(p, i) {
   return `
-    <div class="product-card" data-category="${p.category}" data-url="product/${productSlug(p.name)}.html" style="transition-delay:${(i % 8) * 40}ms">
+    <a class="product-card" href="product/${productSlug(p.name)}.html" data-category="${p.category}" style="transition-delay:${(i % 8) * 40}ms">
       ${p.badge ? `<span class="product-badge ${p.badge}">${badgeLabel(p.badge)}</span>` : ''}
       <div class="product-img">
-        <img src="${p.img}" alt="${p.name}" class="real-product-img" loading="lazy" decoding="async">
+        <img src="${p.img}" alt="${p.name}" class="real-product-img" width="800" height="800" loading="lazy" decoding="async">
       </div>
       <div class="product-info">
         <h3>${p.name}</h3>
@@ -42,11 +42,12 @@ function productCardHTML(p, i) {
         ${p.price ? `<span class="product-price">${p.price}</span>` : ''}
         <span class="tiktok-badge"><i class="fab fa-tiktok"></i> Buy on TikTok</span>
       </div>
-    </div>`;
+    </a>`;
 }
 
 function attachCardLinks(scope) {
   scope.querySelectorAll('.product-card').forEach(card => {
+    if (card.tagName === 'A') return; // real anchor cards need no JS navigation
     if (card.dataset.linked) return;
     card.dataset.linked = '1';
     const go = () => { window.location.href = card.dataset.url; };
@@ -66,7 +67,11 @@ function renderProducts() {
   const grid = document.getElementById('productGrid');
   if (!grid || typeof PRODUCTS === 'undefined') return;
 
-  grid.innerHTML = PRODUCTS.map((p, i) => productCardHTML(p, i)).join('');
+  // The homepage grid is server-rendered into index.html; only render
+  // from JS when the static cards are absent.
+  if (!grid.querySelector('.product-card')) {
+    grid.innerHTML = PRODUCTS.map((p, i) => productCardHTML(p, i)).join('');
+  }
   attachCardLinks(grid);
 
   // Re-observe for scroll-reveal after render
@@ -170,14 +175,16 @@ function productExtraHTML(product) {
   return html;
 }
 
-// ---- Category landing pages (category.html?c=<key>) ----
+// ---- Category landing pages (static: category/<key>.html; this JS
+// renderer only serves the legacy category.html?c=<key> shell) ----
 function renderCategoryPage() {
   const header = document.getElementById('categoryHeader');
   const grid = document.getElementById('categoryGrid');
   if (!header || !grid || typeof PRODUCTS === 'undefined' || typeof CATEGORIES === 'undefined') return;
 
   const key = new URLSearchParams(window.location.search).get('c');
-  const cat = key ? CATEGORIES[key] : null;
+  if (!key) return; // static category pages (category/<key>.html) are pre-rendered
+  const cat = CATEGORIES[key];
 
   if (!cat) {
     header.innerHTML = `
@@ -205,7 +212,7 @@ function renderCategoryPage() {
 }
 
 function updateCategoryMeta(key, cat, items) {
-  const pageUrl = `${SITE_URL}/category.html?c=${key}`;
+  const pageUrl = `${SITE_URL}/category/${key}.html`;
   const firstImg = items.length ? `${SITE_URL}/${encodeURI(items[0].img)}` : '';
 
   setMeta('meta[name="description"]', 'content', cat.metaDesc);
@@ -262,7 +269,7 @@ function renderGuidePicks() {
 // ---- Static product cards (guides index) ----
 function initStaticCards() {
   document.querySelectorAll('.product-grid').forEach(grid => {
-    if (grid.querySelector('.product-card[data-url]')) {
+    if (grid.querySelector('.product-card')) {
       attachCardLinks(grid);
       observeCards();
     }

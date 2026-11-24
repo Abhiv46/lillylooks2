@@ -7,10 +7,10 @@ Contact: infolillylooks@gmail.com
 
 ## Categories
 
-- Skin & Body: https://lillylooks.co.uk/category.html?c=skin
-- Face & Gems: https://lillylooks.co.uk/category.html?c=face
-- Lips: https://lillylooks.co.uk/category.html?c=lips
-- Tools & Brushes: https://lillylooks.co.uk/category.html?c=tools
+- Skin & Body: https://lillylooks.co.uk/category/skin.html
+- Face & Gems: https://lillylooks.co.uk/category/face.html
+- Lips: https://lillylooks.co.uk/category/lips.html
+- Tools & Brushes: https://lillylooks.co.uk/category/tools.html
 
 ## Products
 

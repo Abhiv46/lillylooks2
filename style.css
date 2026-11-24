@@ -683,6 +683,9 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .about-copy { position: relative; }
+/* Guide article section headings were promoted H3 -> H2 for outline
+   order (SEO fix P2-6); keep them rendering at the old H3 size. */
+.product-detail .about-copy h2 { font-size: 1.17em; margin: 1em 0; }
 .about-copy p { color: var(--taupe); margin-bottom: 1.2rem; font-size: 1.02rem; font-weight: 300; line-height: 1.75; }
 .about-copy .section-title, .about-copy .section-eyebrow { text-align: left; }
 .about-copy .section-eyebrow::after { margin-left: 0; margin-right: 0; }
