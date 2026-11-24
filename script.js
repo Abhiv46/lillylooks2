@@ -31,7 +31,7 @@ function initPreloader() {
 // ---- Render product grid ----
 function productCardHTML(p, i) {
   return `
-    <div class="product-card" data-category="${p.category}" data-url="product.html?p=${productSlug(p.name)}" style="transition-delay:${(i % 8) * 40}ms">
+    <div class="product-card" data-category="${p.category}" data-url="product/${productSlug(p.name)}.html" style="transition-delay:${(i % 8) * 40}ms">
       ${p.badge ? `<span class="product-badge ${p.badge}">${badgeLabel(p.badge)}</span>` : ''}
       <div class="product-img">
         <img src="${p.img}" alt="${p.name}" class="real-product-img" loading="lazy" decoding="async">
@@ -231,7 +231,7 @@ function updateCategoryMeta(key, cat, items) {
         name: p.name,
         image: `${SITE_URL}/${encodeURI(p.img)}`,
         description: p.desc,
-        url: `${SITE_URL}/product.html?p=${productSlug(p.name)}`,
+        url: `${SITE_URL}/product/${productSlug(p.name)}.html`,
         offers: { '@type': 'Offer', url: TIKTOK_SHOP_URL }
       }
     }))
@@ -278,7 +278,8 @@ function setMeta(selector, attr, value) {
 }
 
 function updateProductMeta(product) {
-  const pageUrl = `${SITE_URL}/product.html?p=${productSlug(product.name)}`;
+  // Canonical for the legacy product.html view is the static product page.
+  const pageUrl = `${SITE_URL}/product/${productSlug(product.name)}.html`;
   const imgUrl = `${SITE_URL}/${encodeURI(product.img)}`;
   const desc = `${product.desc} Available on TikTok Shop UK at LillyLooks.`;
 
